@@ -401,7 +401,9 @@ static int exynos_set_host(bool enable)
 extern u8 usb30en;
 #endif
 
-extern void set_ncm_ready(bool ready);
+/* compiler complains about this set_ncm_ready, so let's comment it out */
+/* extern void set_ncm_ready(bool ready); */
+
 static int exynos_set_peripheral(bool enable)
 {
 	struct otg_notify *o_notify;
@@ -415,7 +417,7 @@ static int exynos_set_peripheral(bool enable)
 		usb30en = 0;
 #endif
 		check_usb_vbus_state(pdata->g_ndev.gadget_state);
-        set_ncm_ready(false);
+/*        set_ncm_ready(false); */
 	} else {
 		pdata->g_ndev.gadget_state = GADGET_NOTIFIER_ATTACH;
 		check_usb_vbus_state(pdata->g_ndev.gadget_state);
