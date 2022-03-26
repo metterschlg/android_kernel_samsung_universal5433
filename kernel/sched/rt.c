@@ -895,12 +895,14 @@ static int sched_rt_runtime_exceeded(struct rt_rq *rt_rq)
 
 			if (!once) {
 				once = true;
+/* comment out - in 19.1, compiler complains about rt_rq-> rq being undefined.
 #ifdef CONFIG_SEC_DEBUG_RT_THROTTLE_ACTIVE
 				sec_debug_aux_log(SEC_DEBUG_AUXLOG_IRQ, "TSK:%llu %s[%d]", rt_rq->rq->clock_task - rt_rq->rt_time, current->comm, current->pid);
 #endif
 
 				printk_sched("sched: RT throttling activated - [%d:%s]rq->clock_task: %llu rt_time:%llu\n",
 						current->pid, current->comm, rt_rq->rq->clock_task, rt_rq->rt_time);
+*/
 			}
 		} else {
 			/*
