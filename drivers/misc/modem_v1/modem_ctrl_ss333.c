@@ -176,7 +176,7 @@ static int ss333_on(struct modem_ctl *mc)
 
 	if (mc->wake_lock && !wake_lock_active(mc->wake_lock)) {
 		wake_lock(mc->wake_lock);
-		mif_err("%s->wake_lock locked\n", mc->name);
+		mif_info("%s->wake_lock locked\n", mc->name);
 	}
 
 	if (ld->off)
@@ -321,7 +321,7 @@ static int ss333_force_crash_exit(struct modem_ctl *mc)
 
 	if (mc->wake_lock && !wake_lock_active(mc->wake_lock)) {
 		wake_lock(mc->wake_lock);
-		mif_err("%s->wake_lock locked\n", mc->name);
+		mif_info("%s->wake_lock locked\n", mc->name);
 	}
 
 	if (ld->off)
@@ -354,7 +354,7 @@ static int ss333_dump_reset(struct modem_ctl *mc)
 
 	if (mc->wake_lock && !wake_lock_active(mc->wake_lock)) {
 		wake_lock(mc->wake_lock);
-		mif_err("%s->wake_lock locked\n", mc->name);
+		mif_info("%s->wake_lock locked\n", mc->name);
 	}
 
 	if (ld->off)

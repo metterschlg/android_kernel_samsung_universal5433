@@ -938,7 +938,7 @@ static void io_dev_modem_state_changed(struct io_device *iod,
 	if (state == STATE_CRASH_RESET || state == STATE_CRASH_EXIT) {
 		if (mc->wake_lock && !wake_lock_active(mc->wake_lock)) {
 			wake_lock(mc->wake_lock);
-			mif_err("%s->wake_lock locked\n", mc->name);
+			mif_info("%s->wake_lock locked\n", mc->name);
 		}
 	}
 
@@ -1098,7 +1098,7 @@ static long misc_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 	switch (cmd) {
 	case IOCTL_MODEM_ON:
 		if (mc->ops.modem_on) {
-			mif_err("%s: IOCTL_MODEM_ON\n", iod->name);
+			mif_info("%s: IOCTL_MODEM_ON\n", iod->name);
 			return mc->ops.modem_on(mc);
 		}
 		mif_err("%s: !mc->ops.modem_on\n", iod->name);
@@ -1106,7 +1106,7 @@ static long misc_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 	case IOCTL_MODEM_OFF:
 		if (mc->ops.modem_off) {
-			mif_err("%s: IOCTL_MODEM_OFF\n", iod->name);
+			mif_info("%s: IOCTL_MODEM_OFF\n", iod->name);
 			return mc->ops.modem_off(mc);
 		}
 		mif_err("%s: !mc->ops.modem_off\n", iod->name);
@@ -1114,7 +1114,7 @@ static long misc_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 	case IOCTL_MODEM_RESET:
 		if (mc->ops.modem_reset) {
-			mif_err("%s: IOCTL_MODEM_RESET\n", iod->name);
+			mif_info("%s: IOCTL_MODEM_RESET\n", iod->name);
 			return mc->ops.modem_reset(mc);
 		}
 		mif_err("%s: !mc->ops.modem_reset\n", iod->name);
@@ -1122,7 +1122,7 @@ static long misc_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 	case IOCTL_MODEM_BOOT_ON:
 		if (mc->ops.modem_boot_on) {
-			mif_err("%s: IOCTL_MODEM_BOOT_ON\n", iod->name);
+			mif_info("%s: IOCTL_MODEM_BOOT_ON\n", iod->name);
 			return mc->ops.modem_boot_on(mc);
 		}
 		mif_err("%s: !mc->ops.modem_boot_on\n", iod->name);
@@ -1130,14 +1130,14 @@ static long misc_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 	case IOCTL_MODEM_BOOT_OFF:
 		if (mc->ops.modem_boot_off) {
-			mif_err("%s: IOCTL_MODEM_BOOT_OFF\n", iod->name);
+			mif_info("%s: IOCTL_MODEM_BOOT_OFF\n", iod->name);
 			return mc->ops.modem_boot_off(mc);
 		}
 		mif_err("%s: !mc->ops.modem_boot_off\n", iod->name);
 		return -EINVAL;
 
 	case IOCTL_MODEM_BOOT_DONE:
-		mif_err("%s: IOCTL_MODEM_BOOT_DONE\n", iod->name);
+		mif_info("%s: IOCTL_MODEM_BOOT_DONE\n", iod->name);
 		if (mc->ops.modem_boot_done)
 			return mc->ops.modem_boot_done(mc);
 		return 0;
@@ -1207,7 +1207,7 @@ static long misc_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 	case IOCTL_MODEM_DUMP_START:
 		if (mc->ops.modem_dump_start) {
-			mif_err("%s: IOCTL_MODEM_DUMP_START\n", iod->name);
+			mif_info("%s: IOCTL_MODEM_DUMP_START\n", iod->name);
 			return mc->ops.modem_dump_start(mc);
 		} else if (ld->dump_start) {
 			mif_err("%s: IOCTL_MODEM_DUMP_START\n", iod->name);
