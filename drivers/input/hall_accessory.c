@@ -86,9 +86,6 @@ static void accessory_detect_work(struct work_struct *work)
 static void accessory_detect_work(struct work_struct *work)
 {
 	bool first;
-#ifdef CONFIG_SENSORS_HALL_IRQ_CTRL
-	bool second;
-#endif
 	struct hall_drvdata *ddata =
 		container_of(work, struct hall_drvdata,
 				accessory_dwork.work);
