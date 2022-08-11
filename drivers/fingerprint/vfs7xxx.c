@@ -61,7 +61,6 @@
 
 #include <linux/platform_data/spi-s3c64xx.h>
 #ifdef ENABLE_SENSORS_FPRINT_SECURE
-#include <linux/wakelock.h>
 #include <linux/clk.h>
 #include <linux/pm_runtime.h>
 #include <linux/spi/spidev.h>
@@ -164,7 +163,7 @@ struct vfsspi_device_data {
 #ifdef ENABLE_SENSORS_FPRINT_SECURE
 	bool enabled_clk;
 #ifdef FEATURE_SPI_WAKELOCK
-	struct wake_lock fp_spi_lock;
+	struct wakeup_source fp_spi_lock;
 #endif
 #endif
 	int sensortype;
@@ -612,7 +611,7 @@ static int vfsspi_set_clk(struct vfsspi_device_data *vfsspi_device,
 						__func__);
 				kfree(spi_info);
 #ifdef FEATURE_SPI_WAKELOCK
-				wake_lock(&vfsspi_device->fp_spi_lock);
+				__pm_stay_awake(&vfsspi_device->fp_spi_lock);
 #endif
 				vfsspi_device->enabled_clk = true;
 			} else
@@ -648,7 +647,7 @@ static int vfsspi_ioctl_disable_spi_clock(
 
 		spi_dev_put(spidev);
 #ifdef FEATURE_SPI_WAKELOCK
-		wake_unlock(&vfsspi_device->fp_spi_lock);
+		__pm_relax(&vfsspi_device->fp_spi_lock);
 #endif
 		vfsspi_device->enabled_clk = false;
 	}
@@ -1183,8 +1182,8 @@ static int vfsspi_platformInit(struct vfsspi_device_data *vfsspi_device)
 
 #ifdef ENABLE_SENSORS_FPRINT_SECURE
 #ifdef FEATURE_SPI_WAKELOCK
-	wake_lock_init(&vfsspi_device->fp_spi_lock,
-		WAKE_LOCK_SUSPEND, "vfsspi_wake_lock");
+	wakeup_source_init(&vfsspi_device->fp_spi_lock, "vfsspi_wakeup_lock");
+	pr_info("wakeup_source_init - vfsspi_wake_lock \n");
 #endif
 #endif
 
@@ -1230,7 +1229,7 @@ static void vfsspi_platformUninit(struct vfsspi_device_data *vfsspi_device)
 			gpio_free(vfsspi_device->ocp_en);
 #ifdef ENABLE_SENSORS_FPRINT_SECURE
 #ifdef FEATURE_SPI_WAKELOCK
-		wake_lock_destroy(&vfsspi_device->fp_spi_lock);
+		wakeup_source_trash(&vfsspi_device->fp_spi_lock);
 #endif
 #endif
 	}
