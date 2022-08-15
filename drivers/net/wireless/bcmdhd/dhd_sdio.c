@@ -4048,7 +4048,7 @@ dhdsdio_write_vars(dhd_bus_t *bus)
 		if (memcmp(vbuffer, nvram_ularray, varsize)) {
 			DHD_ERROR(("%s: Downloaded NVRAM image is corrupted.\n", __FUNCTION__));
 		} else
-			DHD_ERROR(("%s: Download, Upload and compare of NVRAM succeeded.\n",
+			DHD_INFO(("%s: Download, Upload and compare of NVRAM succeeded.\n",
 			__FUNCTION__));
 
 		MFREE(bus->dhd->osh, nvram_ularray, varsize);
@@ -4555,7 +4555,7 @@ dhd_bus_init(dhd_pub_t *dhdp, bool enforce_mutex)
 	}
 
 	if (enable) {
-		DHD_ERROR(("Took %u usec before dongle is ready\n", tmo.elapsed));
+		DHD_INFO(("Took %u usec before dongle is ready\n", tmo.elapsed));
 		enable = ready;
 	} else {
 		DHD_ERROR(("dstatus when timed out on f2-fifo not ready = 0x%x\n", dstatus));
@@ -4593,7 +4593,7 @@ dhd_bus_init(dhd_pub_t *dhdp, bool enforce_mutex)
 
 #endif /* !BCMSPI */
 
-	DHD_ERROR(("%s: enable 0x%02x, ready 0x%02x (waited %uus)\n",
+	DHD_INFO(("%s: enable 0x%02x, ready 0x%02x (waited %uus)\n",
 	          __FUNCTION__, enable, ready, tmo.elapsed));
 
 

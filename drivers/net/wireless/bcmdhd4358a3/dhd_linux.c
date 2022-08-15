@@ -12346,10 +12346,10 @@ dhd_set_blob_support(dhd_pub_t *dhdp, char *fw_path)
 
 	fp = filp_open(filepath, O_RDONLY, 0);
 	if (IS_ERR(fp)) {
-		DHD_ERROR(("%s: ----- blob file dosen't exist -----\n", __FUNCTION__));
+		DHD_INFO(("%s: ----- blob file dosen't exist -----\n", __FUNCTION__));
 		dhdp->is_blob = FALSE;
 	} else {
-		DHD_ERROR(("%s: ----- blob file exist -----\n", __FUNCTION__));
+		DHD_INFO(("%s: ----- blob file exist -----\n", __FUNCTION__));
 		dhdp->is_blob = TRUE;
 #if defined(CONCATE_BLOB)
 		strncat(fw_path, "_blob", strlen("_blob"));

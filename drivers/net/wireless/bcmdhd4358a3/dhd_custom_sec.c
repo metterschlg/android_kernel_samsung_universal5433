@@ -939,7 +939,7 @@ void sec_control_pm(dhd_pub_t *dhd, uint *power_mode)
 		return;
 	} else {
 		kernel_read(fp, fp->f_pos, &power_val, 1);
-		DHD_ERROR(("[WIFI_SEC] %s: POWER_VAL = %c \r\n", __FUNCTION__, power_val));
+		DHD_INFO(("[WIFI_SEC] %s: POWER_VAL = %c \r\n", __FUNCTION__, power_val));
 
 		if (power_val == '0') {
 #ifdef ROAM_ENABLE
@@ -1276,7 +1276,7 @@ uint32 sec_save_wlinfo(char *firm_ver, char *dhd_ver, char *nvram_p, char *clm_v
 	} else {
 		ret = write_filesystem(fp, fp->f_pos, version_info, sizeof(version_info));
 		DHD_INFO(("[WIFI_SEC] sec_save_wlinfo done. ret : %d\n", ret));
-		DHD_ERROR(("[WIFI_SEC] save .wifiver.info file.\n"));
+		DHD_INFO(("[WIFI_SEC] save .wifiver.info file.\n"));
 		filp_close(fp, NULL);
 	}
 	return ret;

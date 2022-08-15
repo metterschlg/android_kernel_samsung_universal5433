@@ -3699,7 +3699,7 @@ dhdpcie_bus_write_vars(dhd_bus_t *bus)
 		if (memcmp(vbuffer, nvram_ularray, varsize)) {
 			DHD_ERROR(("%s: Downloaded NVRAM image is corrupted.\n", __FUNCTION__));
 		} else
-			DHD_ERROR(("%s: Download, Upload and compare of NVRAM succeeded.\n",
+			DHD_INFO(("%s: Download, Upload and compare of NVRAM succeeded.\n",
 			__FUNCTION__));
 
 		MFREE(bus->dhd->osh, nvram_ularray, varsize);
@@ -4425,7 +4425,7 @@ dhdpcie_readshared(dhd_bus_t *bus)
 		bcm_print_bytes("ring_info_raw", (uchar *)&ring_info, sizeof(ring_info_t));
 		DHD_INFO(("ring_info\n"));
 
-		DHD_ERROR(("max H2D queues %d\n", ltoh16(ring_info.max_sub_queues)));
+		DHD_INFO(("max H2D queues %d\n", ltoh16(ring_info.max_sub_queues)));
 
 		DHD_INFO(("mail box address\n"));
 		DHD_INFO(("h2d_mb_data_ptr_addr 0x%04x\n", bus->h2d_mb_data_ptr_addr));

@@ -1288,7 +1288,7 @@ uint32 sec_save_wlinfo(char *firm_ver, char *dhd_ver, char *nvram_p)
 	} else {
 		ret = write_filesystem(fp, fp->f_pos, version_info, sizeof(version_info));
 		DHD_INFO(("[WIFI_SEC] sec_save_wlinfo done. ret : %d\n", ret));
-		DHD_ERROR(("[WIFI_SEC] save .wifiver.info file.\n"));
+		DHD_INFO(("[WIFI_SEC] save .wifiver.info file.\n"));
 		filp_close(fp, NULL);
 	}
 	return ret;
@@ -1317,7 +1317,7 @@ void dhd_get_memdump_info(dhd_pub_t *dhd)
 
 		mem_val = bcm_atoi((char *)&mem_val);
 
-		DHD_ERROR(("[WIFI_SEC]%s: MEMDUMP ENABLED = %d\n", __FUNCTION__, mem_val));
+		DHD_INFO(("[WIFI_SEC]%s: MEMDUMP ENABLED = %d\n", __FUNCTION__, mem_val));
 		filp_close(fp, NULL);
 	}
 

@@ -91,7 +91,7 @@ do {	\
 
 #ifdef CUSTOMER_HW4
 #define DHD_TRACE_HW4	DHD_ERROR
-#define DHD_INFO_HW4	DHD_ERROR
+#define DHD_INFO_HW4	DHD_INFO
 #else
 #define DHD_TRACE_HW4	DHD_TRACE
 #define DHD_INFO_HW4	DHD_INFO

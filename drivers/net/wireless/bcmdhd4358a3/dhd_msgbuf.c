@@ -3242,7 +3242,7 @@ int dhd_prot_ioctl(dhd_pub_t *dhd, int ifidx, wl_ioctl_t * ioc, void * buf, int 
 			goto done;
 		}
 #endif /* CONFIG_CONTROL_PM */
-		DHD_ERROR(("%s: SET PM to %d\n", __FUNCTION__, *(char *)buf));
+		DHD_INFO(("%s: SET PM to %d\n", __FUNCTION__, *(char *)buf));
 	}
 #endif /* CUSTOMER_HW4 */
 

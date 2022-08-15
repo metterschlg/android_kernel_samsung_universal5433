@@ -89,7 +89,7 @@ do {	\
 #endif /* DHD_LOG_DUMP */
 
 #ifdef CUSTOMER_HW4
-#define DHD_TRACE_HW4	DHD_ERROR
+#define DHD_TRACE_HW4	DHD_TRACE
 #else
 #define DHD_TRACE_HW4	DHD_TRACE
 #endif
