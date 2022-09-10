@@ -2332,13 +2332,13 @@ static int __devinit tc300k_probe(struct i2c_client *client,
 	int i=0;
 	int err=0;
 	printk(KERN_DEBUG "[TK] %s\n",__func__);
-
+/*
 	if (lpcharge == 1) {
 		dev_err(&client->dev, "%s : Do not load driver due to : lpm %d\n",
 							 __func__, lpcharge);
 		return -ENODEV;
 	}
-
+*/
 	if (!i2c_check_functionality(adapter, I2C_FUNC_I2C)) {
 		dev_err(&client->dev,
 			"[TK] i2c_check_functionality fail\n");

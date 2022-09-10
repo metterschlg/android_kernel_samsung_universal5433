@@ -3937,13 +3937,13 @@ static int synaptics_rmi4_probe(struct i2c_client *client,
 				__func__);
 		return -EIO;
 	}
-
+/*
 	if (lpcharge == 1) {
 		tsp_debug_err(true, &client->dev, "%s : Do not load driver due to : lpm %d\n",
 			 __func__, lpcharge);
 		return -ENODEV;
 	}
-
+*/
 	/* Build up driver data */
 	retval = synaptics_rmi4_setup_drv_data(client);
 	if (retval < 0) {
