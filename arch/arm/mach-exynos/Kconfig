@@ -119,22 +119,6 @@ config SOC_EXYNOS5430_REV_1
 	bool "Rev 1.0"
 endchoice
 
-choice
-	prompt "Resolution Type"
-	depends on SOC_EXYNOS5430
-	help
-	  This option selects display resolution type.
-
-config EXYNOS5430_WQHD
-	bool "Resolution WQHD (2560 x 1440)"
-
-config EXYNOS5430_FHD
-	bool "Resolution Full HD (1920 x 1080)"
-
-config EXYNOS5430_HD
-	bool "Resolution HD (1280 x 720)"
-endchoice
-
 menu "Exynos5430 Type"
 	depends on SOC_EXYNOS5430
 
