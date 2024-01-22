@@ -1950,6 +1950,9 @@ err1:
 	free_irq(irq, dwc);
 
 err0:
+	free_irq(irq, dwc);
+
+err0:
 	return ret;
 }
 
