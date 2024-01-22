@@ -46,8 +46,8 @@
 
 int irq_select_affinity_usr(unsigned int irq, struct cpumask *mask);
 
-//static struct notifier_block rndis_notifier;
-//static int gadget_irq = 0;
+static struct notifier_block rndis_notifier;
+static int gadget_irq = 0;
 #endif
 #if defined(CONFIG_USB_SUPER_HIGH_SPEED_SWITCH_CHANGE)
 #define EP0_HS_MPS 64
@@ -1834,26 +1834,26 @@ static int set_cpu_core_from_usb_irq(int enable)
 }
 
 
-// static int rndis_notify_callback(struct notifier_block *this,
-// 				unsigned long event, void *ptr)
-// {
-// 	struct net_device *dev = ptr;
+static int rndis_notify_callback(struct notifier_block *this,
+				unsigned long event, void *ptr)
+{
+	struct net_device *dev = ptr;
 
-// 	if (!net_eq(dev_net(dev), &init_net))
-// 		return NOTIFY_DONE;
+	if (!net_eq(dev_net(dev), &init_net))
+		return NOTIFY_DONE;
 
-// 	if (!strncmp(dev->name, "rndis", 5)) {
-// 		switch (event) {
-// 		case NETDEV_UP:
-// 			set_cpu_core_from_usb_irq(true);
-// 			break;
-// 		case NETDEV_DOWN:
-// 			set_cpu_core_from_usb_irq(false);
-// 			break;
-// 		}
-// 	}
-// 	return NOTIFY_DONE;
-// }
+	if (!strncmp(dev->name, "rndis", 5)) {
+		switch (event) {
+		case NETDEV_UP:
+			set_cpu_core_from_usb_irq(true);
+			break;
+		case NETDEV_DOWN:
+			set_cpu_core_from_usb_irq(false);
+			break;
+		}
+	}
+	return NOTIFY_DONE;
+}
 #endif
 
 static int dwc3_gadget_start(struct usb_gadget *g,
