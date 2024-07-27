@@ -3913,7 +3913,6 @@ static inline int hmp_boost(void)
 #ifdef CONFIG_SCHED_HMP_LITTLE_PACKING
 static inline int hmp_packing_enable(void)
 {
-	u64 now = ktime_to_us(ktime_get());
 	int ret;
 	unsigned long flags;
 

@@ -845,7 +845,6 @@ int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 		 size_t len, int noblock, int flags, int *addr_len)
 {
 	struct inet_sock *isk = inet_sk(sk);
-	int family = sk->sk_family;
 	struct sk_buff *skb;
 	int copied, err;
 
