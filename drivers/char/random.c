@@ -1267,6 +1267,7 @@ _random_read(int nonblock, char __user *buf, size_t nbytes)
 		break;		/* This break makes the device work */
 				/* like a named pipe */
 	}
+	return retval;
 }
 
 static ssize_t

@@ -1802,7 +1802,6 @@ static int dwc3_gadget_pullup(struct usb_gadget *g, int is_on)
 }
 
 static irqreturn_t dwc3_interrupt(int irq, void *_dwc);
-static irqreturn_t dwc3_thread_interrupt(int irq, void *_dwc);
 #ifdef CONFIG_USBIRQ_BALANCING_LTE_HIGHTP
 static int set_cpu_core_from_usb_irq(int enable)
 {
